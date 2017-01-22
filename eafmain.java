@@ -78,9 +78,6 @@ public class eafmain {
 				+"\n\t\tASSESSED AMOUNT\t\t\t\t\t\t\t\t\t\t\t62,751.50"
 				+"\n\t\tOTHER DUES\t\t\t\t\t\t\t\t\t\t\t30.00"
 				+"\n\t\t\tADJUSTMENT FEE\t\t\t\t\t\t\t\t30.00"
-				
-
-				
 				);
 	}
 
