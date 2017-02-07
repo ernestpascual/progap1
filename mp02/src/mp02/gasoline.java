@@ -2,8 +2,9 @@ package mp02;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 import utility.Reader;
-import java.text.DecimalFormat;
 import java.text.*;
 
 
@@ -12,22 +13,37 @@ public class gasoline {
 	public static void main(String[] args) 
 		throws IOException{
 		prompter();
-		
 	}
 	
 	//prompts for the user input
+	@SuppressWarnings("resource")
 	public static void prompter()
 		throws IOException{
 			String gasType = Reader.readString
 					("Enter your gasoline type: ").toLowerCase();
 			gasVerify(gasType);
-			int gasLiters = Reader.readInt("Enter number of Liters: ");
-			receiptHeader();
-			gasTypePerLiter(gasType, gasLiters);
+	// int gasLiters = Reader.readInt("Enter number of Liters: "); --- alternate solution
+	//gas liters validator
+			Scanner sc = new Scanner(System.in);
+			// scans input value
+				try{
+					System.out.print("Enter Number of Liters: ");
+					int gasLiters = sc.nextInt();
+					if (gasLiters < 0){
+						System.out.println("Invalid number.");
+						prompter();
+					}else {
+						receiptHeader();
+						gasTypePerLiter(gasType, gasLiters);
+					}		
+				} catch(InputMismatchException except){
+					System.out.println("Invalid number.");
+					prompter();
+			}
 	}
 	
+	
 	//format heading of the receipt
-	// TO BE EDITED
 	public static void receiptHeader(){
 		 Date dNow = new Date( );
 	      SimpleDateFormat ft = 
@@ -43,7 +59,7 @@ public class gasoline {
 	/* validates if the input string is within the choices
 	 else it will output error message and loop again
 	 */
-	//bug reverts to prompter if executed
+	// bug reverts to prompter if executed
 	public static void gasVerify(String gasType)
 			throws IOException{
 		switch(gasType){
@@ -62,7 +78,6 @@ public class gasoline {
 		
 		}
 	
-	
 	// method in adding the vat
 	public static void addVat(int price){
 		// two decimal points
@@ -75,7 +90,7 @@ public class gasoline {
 	//computing the total amount to be paid with VAT
 	public static void gasTypePerLiter(String gasType, int liters)
 		throws IOException{
-	int total =0;
+	int total = 0;
 	switch(gasType){
 	//premium
 	case "premium": 
@@ -107,6 +122,7 @@ public class gasoline {
 			prompter();
 		} else {
 			System.out.println("Press any key to exit.");
+			System.exit(0);
 		}
 		}
 
@@ -115,14 +131,34 @@ public class gasoline {
 	
 	
 	
-// format
-// fix bug at prompter
+
 /*
  * NOTE - The gasoline type must be correct (either unleaded, diesel or premium) 
  * and number of liters ordered must not be negative or zero. If one is invalid or 
  * both of them are invalid, any computations MUST NOT be performed. You have to repeat its 
  * data entry until the data entered is correct. 
  */
+
+/* LOG (02-04-17)
+ * Receipt format OK
+ * Update to java 1.8 OK
+ * case OK
+ * Continue option OK
+ * VAT calculation OK
+ * TOTAL SALES calculation OK
+ * Two decimal points OK
+ * Fix exceptions for negative and decimal values
+ * Fix repeat data entry for negative and decimal values
+ * Fix prompter() bug
+ */
+
+/* LOG (02-07-17)
+ * exceptions for negative and decimal values OK (use try catch with InputMismatchException for decimal and ifelse x < 0
+ * for negative value. 
+ * NOTE: Don't forget the else statement to direct the logic when the expression is false.
+ * repeat data entry on exception  OK 
+ * prompter() bug  OK (use System.exit(0))
+*/
 
 
 
