@@ -7,9 +7,19 @@ public class Vehicle {
 	public String manufacturer;
 	public double price;
 	
+	private Engine engine;
+	
+	public Engine getEngine() {
+		return engine;
+	}
+
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
+
 	public void printDetails(){
 		System.out.println("Name: " + year + " " + name);
-		System.out.println("MAnufacturer: " + manufacturer);
+		System.out.println("Manufacturer: " + manufacturer);
 		System.out.println("Color: " + color);
 		System.out.println("Price: " + price);
 	}

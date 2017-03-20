@@ -17,4 +17,14 @@ public class Bicycle extends Vehicle {
 		this.type = type;
 	}
 	private String type;
+	
+	private Engine engine;
+
+	public Engine getEngine() {
+		return engine;
+	}
+	public void setEngine(Engine engine) {
+		this.engine = engine;
+	}
+	
 }
