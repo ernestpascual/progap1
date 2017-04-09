@@ -18,12 +18,14 @@ public class StoreDetails {
 	}
 	
 	// overload constructor to place input variables
-	public StoreDetails(int order, int orderAmount, int creditCardNumber, int price){
+	public StoreDetails(int order, int orderAmount){
 		this.order = order;
 		this.orderAmount = orderAmount;
-		this.price = price;
-		this.creditCardNumber = creditCardNumber;
 		
+	}
+	
+	public StoreDetails(String creditCardNumber){
+		this.creditCardNumber = creditCardNumber;
 	}
 
 	public int getPrice() {
@@ -58,26 +60,15 @@ public class StoreDetails {
 		this.creditCardNumber = creditCardNumber;
 	}
 
-	public double getVat() {
-		return vat;
-	}
-
-	public void setVat(double vat) {
-		this.vat = vat;
-	}
-
-	public double getTotalPayment() {
-		return totalPayment;
-	}
-
-	public void setTotalPayment(double totalPayment) {
-		this.totalPayment = totalPayment;
-	}
 	
 	
 	// function and operations
 	public void computeVat(){
 		this.vat = (this.price * this.orderAmount)*0.12;
+	}
+	
+	public void totalPayment(){
+		this.totalPayment = this.vat + this.price;
 	}
 	
 	

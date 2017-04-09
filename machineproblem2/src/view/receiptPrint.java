@@ -1,5 +1,7 @@
 package view;
 
+import model.StoreDetails;
+
 public class receiptPrint {
 
 	public static void printReceipt(){
@@ -17,8 +19,12 @@ public class receiptPrint {
 	//TODO tax, subtotal, total
 	System.out.println("PAID USING CREDIT CARD");
 	System.out.println("\t\t--- Check Closed ---");
+	}
 	
-	
+	public static void printTotals(StoreDetails store){
+		System.out.println("Total: " + store.getOrder()*store.getOrderAmount());
+		System.out.println("VAT: " + store.getVat());
+		System.out.println("Grand Total: " + store.getTotalPayment());
 		
 	}
 }
