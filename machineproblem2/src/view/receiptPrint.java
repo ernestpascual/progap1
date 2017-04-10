@@ -15,11 +15,12 @@ public class receiptPrint {
 	System.out.println("Order Type: E-Delivery");
 	System.out.println("Menu: Delivery Menu\n\n");
 	System.out.println(store.getOrder());
-	System.out.println("\n1 Items");
+	System.out.println("x " + store.getOrderAmount());
+	System.out.println("\n1 Item");
 	System.out.println("\n\nTotal: Php " + store.getTotal());
 	System.out.println("VAT: Php " + store.getVat());
 	System.out.println("Grand Total: Php " + store.getTotalPayment());
-	System.out.println("PAID USING CREDIT CARD");
+	System.out.println("PAID USING CREDIT CARD ****" +  store.getLastNumbers());
 	System.out.println("\t\t--- Check Closed ---");
 	}
 	

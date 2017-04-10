@@ -1,6 +1,9 @@
 package model;
 
+import java.text.DecimalFormat;
+
 public class StoreDetails {
+	
 	// input variables
 	private int orderAmount;
 	private int price;
@@ -11,7 +14,6 @@ public class StoreDetails {
 		return order;
 	}
 
-	// derivables
 	private int total;
 	
 
@@ -155,6 +157,10 @@ public class StoreDetails {
 	
 	public void computeTotalPayment(){
 		this.totalPayment = this.vat + (this.price * this.orderAmount);
+	}
+	
+	public String getLastNumbers(){
+		return this.creditCardNumber.substring(11,15);
 	}
 	
 	

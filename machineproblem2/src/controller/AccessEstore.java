@@ -10,6 +10,8 @@ import java.io.*;
 
 public class AccessEstore {
 
+	
+
 	public static void main(String[] args) {
 		
 		IntroDisplay.print();
@@ -46,9 +48,10 @@ public class AccessEstore {
 				} else {
 					// validate if credit card number is numeric
 				if (isInteger(creditCardNumber)){
-					// validate if valid credit card number bu luhn's test
+					// validate if valid credit card number by luhn's test
 				if (ValidateCreditCard.luhnTest(creditCardNumber)){
 				System.out.println("Processing....\n\n");
+				payment.setCreditCardNumber(creditCardNumber);
 				receiptPrint.printReceipt(payment);
 				String newOrder = Reader.readString("\n\nNew order? (Y or N)").toUpperCase();
 				if (newOrder.equals("Y")){
