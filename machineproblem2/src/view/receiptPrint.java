@@ -4,7 +4,7 @@ import model.StoreDetails;
 
 public class receiptPrint {
 
-	public static void printReceipt(){
+	public static void printReceipt(StoreDetails store){
 	System.out.println("\t\tJOLIBEE E-STORE PHILIPPINES");
 	System.out.println("\t\tLevel 1 Robinsons Place Manila");
 	System.out.println("\t\t   Midtown Ermita, Manila");
@@ -14,17 +14,19 @@ public class receiptPrint {
 	System.out.println("\nCashier:Aileen\t\t\t\t04/09/2017");
 	System.out.println("Order Type: E-Delivery");
 	System.out.println("Menu: Delivery Menu\n\n");
-	//TODO input order
-	System.out.println("1 Items");
-	//TODO tax, subtotal, total
+	System.out.println(store.getOrder());
+	System.out.println("\n1 Items");
+	System.out.println("\n\nTotal: Php " + store.getTotal());
+	System.out.println("VAT: Php " + store.getVat());
+	System.out.println("Grand Total: Php " + store.getTotalPayment());
 	System.out.println("PAID USING CREDIT CARD");
 	System.out.println("\t\t--- Check Closed ---");
 	}
 	
 	public static void printTotals(StoreDetails store){
-		System.out.println("Total: " + store.getOrder()*store.getOrderAmount());
-		System.out.println("VAT: " + store.getVat());
-		System.out.println("Grand Total: " + store.getTotalPayment());
+		System.out.println("Total: Php " + store.getTotal());
+		System.out.println("VAT: Php " + store.getVat());
+		System.out.println("Grand Total: Php " + store.getTotalPayment());
 		
 	}
 }
